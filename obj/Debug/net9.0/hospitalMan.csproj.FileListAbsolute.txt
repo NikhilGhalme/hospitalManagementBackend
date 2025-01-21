@@ -37,3 +37,4 @@
 /home/nikhil/Desktop/hospitalMan/obj/Debug/net9.0/hospitalMan.pdb
 /home/nikhil/Desktop/hospitalMan/obj/Debug/net9.0/hospitalMan.genruntimeconfig.cache
 /home/nikhil/Desktop/hospitalMan/obj/Debug/net9.0/ref/hospitalMan.dll
+/home/nikhil/Desktop/hospitalMan/obj/Debug/net9.0/hospitalMan.sourcelink.json
