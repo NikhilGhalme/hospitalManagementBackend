@@ -1,20 +1,29 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddOpenApi();
+// Add CORS services to the container
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()  // Allow any origin
+               .AllowAnyMethod()  // Allow any HTTP method
+               .AllowAnyHeader(); // Allow any HTTP header
+    });
+});
+
+// Add the UserService and Controllers
+builder.Services.AddSingleton<UserService>();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+// Enable CORS globally
+app.UseCors("AllowAll");
 
-app.UseHttpsRedirection();
-
-// Mapping the root URL to return "Hello"
-app.MapGet("/", () => "Hello");
+// Map controllers
+app.MapControllers();
 
 app.Run();
-    
